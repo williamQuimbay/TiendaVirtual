@@ -1,17 +1,31 @@
 <resources>
+       <!-- menu vendedor -->
     <string name="app_name">ODIN SYSTEM</string>
+    
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    
     <string name="op_inicio_v">Inicio</string>
     <string name="op_mi_tienda_v">Mi tienda</string>
     <string name="op_resenia_v">Reseña</string>
     <string name="op_cerrar_sesion_v">Cerrar sesion</string>
 
 
-
     <string name="op_mis_productos_v">Mis productos</string>
     <string name="op_mis_ordenes_v">Ordenes</string>
 
 
-    <string name="txt_bienvenida" >Bienvenido(a)</string>
+    <string name="txt_bienvenida">Bienvenido(a)</string>
+
+
+                <!--fragmentos-->
+    <string name="mi_tienda_v">MI TIENDA</string>
+    <string name="mis_productos_v">MIS PRODUCTOS</string>
+    <string name="mis_ordenes_v">ORDENES</string>
+    <string name="resenia_v">RESEÑA</string>
+
+
+
 
 
 
