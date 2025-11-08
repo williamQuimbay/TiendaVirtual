@@ -51,5 +51,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.lottie)
+    implementation(libs.lottie) /* animaciones*/
+    implementation(libs.firebaseAuth)/* autenticacion con firebase*/
+    implementation(libs.firebaseDatabase)/* base de datos*/
 }

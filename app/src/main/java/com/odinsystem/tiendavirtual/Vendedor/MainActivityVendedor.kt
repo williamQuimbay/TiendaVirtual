@@ -1,5 +1,6 @@
 package com.odinsystem.tiendavirtual.Vendedor
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -11,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.odinsystem.tiendavirtual.R
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentMisProductosV
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentOrdenesV
@@ -23,6 +25,10 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
 
     private lateinit var binding: ActivityMainVendedorBinding
 
+    private var firebaseAuth: FirebaseAuth? = null
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +36,13 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
         enableEdgeToEdge()
         setContentView(binding.root)
 
+
+
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        comprobarSesion()
 
         binding.navigatorView.setNavigationItemSelectedListener(this)
 
@@ -50,6 +61,23 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
         replaceFragment(FragmentInicioV())
         binding.navigatorView.setCheckedItem(R.id.op_inicio_v)
 
+    }
+
+    private fun cerrarSession(){
+        firebaseAuth!!.signOut()
+        startActivity(Intent(applicationContext, LoginVendedorActivity::class.java))
+        finish()
+        Toast.makeText(applicationContext, "Has cerrada sesion", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun comprobarSesion() {
+//        si el ususario nbo ha iniciado session
+        if (firebaseAuth!!.currentUser == null) {
+            startActivity(Intent(applicationContext, LoginVendedorActivity::class.java))
+            Toast.makeText(applicationContext, "Vendedor no registrado o no loggeado", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(applicationContext, "Vendedor en linea", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -72,7 +100,7 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
                 replaceFragment(FragmentReseniaV())
             }
             R.id.op_cerrar_sesion_v ->{
-                Toast.makeText(applicationContext, "Saliste de la aplicacion ", Toast.LENGTH_SHORT).show()
+               cerrarSession()
             }
             R.id.op_mis_productos ->{
                 replaceFragment(FragmentMisProductosV())

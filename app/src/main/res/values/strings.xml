@@ -5,24 +5,29 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
 
+    <!--navegacion vendedor-->
     <string name="op_inicio_v">Inicio</string>
     <string name="op_mi_tienda_v">Mi tienda</string>
     <string name="op_resenia_v">Reseña</string>
     <string name="op_cerrar_sesion_v">Cerrar sesion</string>
 
+    <!--navegacion cliente-->
+    <string name="op_inicio_c">Inicio</string>
+    <string name="op_mi_perfil_c">M i Perfil</string>
+    <string name="op_cerrar_sesion_c">Cerrar sesion</string>
 
+    <!--Bottom navigation bar vendedor-->
     <string name="op_mis_productos_v">Mis productos</string>
     <string name="op_mis_ordenes_v">Ordenes</string>
 
-    <!--fragmentos-->
-    <string name="mi_tienda_v">MI TIENDA</string>
-    <string name="mis_productos_v">MIS PRODUCTOS</string>
-    <string name="mis_ordenes_v">ORDENES</string>
-    <string name="resenia_v">RESEÑA</string>
+    <!--Bottom navigation bar cliente-->
+    <string name="op_mi_tienda_c">Tienda</string>
+    <string name="op_mis_ordenes_c">Mis ordenes</string>
+
 
     <string name="txt_bienvenida">Bienvenido(a)</string>
 
-<!--    Registro de vendedor-->
+    <!--    Registro de vendedor-->
     <string name="txtRegistroV">Registro de vendedor</string>
     <string name="etNombreV">Nombre completo</string>
     <string name="etEmailV">Correo electronico</string>
@@ -30,8 +35,27 @@
     <string name="etCPasswordV">Confirmar contraseña</string>
     <string name="btnRegistrarV">Registrar"</string>
 
+    <!--fragmentos  vendedor-->
+    <string name="mi_tienda_v">MI TIENDA</string>
+    <string name="mis_productos_v">MIS PRODUCTOS</string>
+    <string name="mis_ordenes_v">ORDENES</string>
+    <string name="resenia_v">RESEÑA</string>
+
+    <!--fragmentos  cliente-->
+    <string name="mi_perfil_c">MI PERFIL</string>
+    <string name="mi_tienda_c">TIENDA</string>
+    <string name="mis_ordenes_c">MIS ORDENES</string>
 
 
+
+
+    <!--    login de vendedor-->
+    <string name="txtLoginV">Login de vendedor</string>
+    <string name="btnloginV">Ingresar</string>
+    <string name="txtNoCuenta">No tienes cuenta?</string>
+    <string name="tvRegistrarV">Registrarme</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

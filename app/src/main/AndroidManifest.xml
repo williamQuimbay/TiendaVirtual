@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +13,9 @@
         android:roundIcon="@mipmap/tineda_ico"
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaVirtual">
+        <activity
+            android:name=".Vendedor.LoginVendedorActivity"
+            android:exported="false" />
         <activity
             android:name=".Vendedor.RegistroVendedorActivity"
             android:exported="false" />
@@ -27,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Cliente.MainActivityCliene"
             android:exported="true" />
     </application>
 

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.TiendaVirtual" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-       <item name="colorPrimary">@color/celeste_escuro</item>
+       <item name="colorPrimary">@color/celeste_oscuro</item>
     </style>
 
     <style name="Theme.TiendaVirtual" parent="Base.Theme.TiendaVirtual" />
