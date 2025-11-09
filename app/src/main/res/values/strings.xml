@@ -5,6 +5,11 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
 
+    <string name="tipoVendedor">Vendedor</string>
+    <string name="tipoCliente">Cliente</string>
+
+
+
     <!--navegacion vendedor-->
     <string name="op_inicio_v">Inicio</string>
     <string name="op_mi_tienda_v">Mi tienda</string>
@@ -27,13 +32,18 @@
 
     <string name="txt_bienvenida">Bienvenido(a)</string>
 
-    <!--    Registro de vendedor-->
+    <!--Registro de vendedor-->
     <string name="txtRegistroV">Registro de vendedor</string>
     <string name="etNombreV">Nombre completo</string>
-    <string name="etEmailV">Correo electronico</string>
-    <string name="etPasswordV">contraseña</string>
-    <string name="etCPasswordV">Confirmar contraseña</string>
     <string name="btnRegistrarV">Registrar"</string>
+    <string name="etEmail">Correo electronico</string>
+    <string name="etPassword">contraseña</string>
+    <string name="etCPassword">Confirmar contraseña</string>
+
+    <!--Registro de Cliente-->
+    <string name="txtRegistroC">Registro de cliente</string>
+    <string name="etNombreC">Nombre completo</string>
+    <string name="btnRegistrarC">Registrarme</string>
 
     <!--fragmentos  vendedor-->
     <string name="mi_tienda_v">MI TIENDA</string>
@@ -47,14 +57,18 @@
     <string name="mis_ordenes_c">MIS ORDENES</string>
 
 
-
-
     <!--    login de vendedor-->
     <string name="txtLoginV">Login de vendedor</string>
     <string name="btnloginV">Ingresar</string>
     <string name="txtNoCuenta">No tienes cuenta?</string>
     <string name="tvRegistrarV">Registrarme</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--    login de Cliente-->
+    <string name="txtLoginC">Login de cliente</string>
+    <string name="btnLoginC">Ingresar</string>
+    <string name="tvRegistrarC">Registarse</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

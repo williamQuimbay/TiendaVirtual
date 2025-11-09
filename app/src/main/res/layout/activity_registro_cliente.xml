@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vendedor.RegistroVendedorActivity">
+    tools:context=".Cliente.RegistroClienteActivity">
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -13,30 +14,31 @@
         android:orientation="vertical"
         android:padding="15dp">
 
+
         <TextView
-            android:text="@string/txtRegistroV"
+            android:text="@string/txtRegistroC"
+            android:layout_gravity="center"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
+            android:src="@drawable/ico_registro_c"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/registrov"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
 
-            <!--nombres completos-->
+        <!--Nombres-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/etNombreV"
-                android:hint="@string/etNombreV"
+                android:id="@+id/etNombreC"
+                android:hint="@string/etNombreC"
                 android:drawableStart="@drawable/ico_nombre"
                 android:drawablePadding="10dp"
                 android:inputType="textPersonName|textCapWords"
@@ -44,8 +46,7 @@
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--email-->
+        <!--Correo-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -60,29 +61,28 @@
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--password-->
+        <!--Password-->
         <com.google.android.material.textfield.TextInputLayout
-            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
 
             <EditText
+                android:id="@+id/etPassword"
                 android:hint="@string/etPassword"
-                android:inputType="textPassword"
-                app:passwordToggleEnabled="true"
                 android:drawableStart="@drawable/ico_password"
                 android:drawablePadding="10dp"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--confirmar password-->
+        <!--Confirmar Password-->
         <com.google.android.material.textfield.TextInputLayout
-            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+
 
             <EditText
                 android:id="@+id/etCpassword"
@@ -90,24 +90,25 @@
                 android:drawableStart="@drawable/ico_password"
                 android:drawablePadding="10dp"
                 android:inputType="textPassword"
-                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!--Registro de vendedor-->
+        <!--Registrar Cliente-->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRegistrarV"
-            android:text="@string/btnRegistrarV"
-            app:cornerRadius="8dp"
+            android:id="@+id/btnRegistrarC"
+            android:text="@string/btnRegistrarC"
             android:textAllCaps="true"
+            app:cornerRadius="8dp"
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 </ScrollView>

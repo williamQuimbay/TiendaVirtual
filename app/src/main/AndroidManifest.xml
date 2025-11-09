@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaVirtual">
         <activity
+            android:name=".SelecionarTipoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Cliente.loginClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Cliente.RegistroClienteActivity"
+            android:exported="false" />
+        <activity
             android:name=".Vendedor.LoginVendedorActivity"
             android:exported="false" />
         <activity

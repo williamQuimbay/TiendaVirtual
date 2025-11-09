@@ -1,4 +1,4 @@
-package com.odinsystem.tiendavirtual.Vendedor
+package com.odinsystem.tiendavirtual.Cliente
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -7,41 +7,42 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.odinsystem.tiendavirtual.databinding.ActivityLoginBinding
+import com.odinsystem.tiendavirtual.Vendedor.MainActivityVendedor
+import com.odinsystem.tiendavirtual.databinding.ActivityLoginClienteBinding
 
+class loginClienteActivity : AppCompatActivity() {
 
-class LoginVendedorActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginClienteBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var progressDialog: ProgressDialog
+    private lateinit var  progressDialog: ProgressDialog
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginClienteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         firebaseAuth = FirebaseAuth.getInstance()
-
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Por favor espere")
         progressDialog.setCanceledOnTouchOutside(false)
 
-        binding.btnLoginV.setOnClickListener {
-            validarInfo()
+        binding.btnLoginC.setOnClickListener {
+            validarDatos()
+
         }
 
-        binding.tvRegistrarV.setOnClickListener {
-            startActivity(Intent(applicationContext, RegistroVendedorActivity::class.java))
+        binding.tvRegistrarC.setOnClickListener {
+            startActivity(Intent(this@loginClienteActivity, RegistroClienteActivity::class.java))
         }
+
     }
-
     private var correo = ""
     private var password = ""
-    private fun validarInfo(){
+
+    private fun validarDatos() {
         correo = binding.etEmail.text.toString().trim()
-        password = binding.etPasswordV.text.toString().trim()
+        password = binding.etPassword.text.toString().trim()
 
         if (correo.isEmpty()){
             binding.etEmail.error = "Ingrese su correo"
@@ -49,14 +50,13 @@ class LoginVendedorActivity : AppCompatActivity() {
         }else if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
             binding.etEmail.error = "Ingrese un correo valido"
         }else if (password.isEmpty()){
-            binding.etPasswordV.error = "Ingrese su contraseña"
-            binding.etPasswordV.requestFocus()
-            }else{
+            binding.etPassword.error = "Ingrese su contraseña"
+            binding.etPassword.requestFocus()
+        }else{
             loginVendedor()
         }
 
     }
-
     private fun loginVendedor() {
         progressDialog.setMessage("Iniciando sesion")
         progressDialog.show()
@@ -75,3 +75,5 @@ class LoginVendedorActivity : AppCompatActivity() {
             }
     }
 }
+
+

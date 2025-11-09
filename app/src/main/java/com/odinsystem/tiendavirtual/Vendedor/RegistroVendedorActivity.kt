@@ -42,30 +42,30 @@ class RegistroVendedorActivity : AppCompatActivity() {
 
     private fun validarInformacion() {
         nombre = binding.etNombreV.text.toString().trim()
-        correo = binding.etEmailV.text.toString().trim()
-        password = binding.etCpasswordV.text.toString().trim()
-        Cpassword = binding.etCpasswordV.text.toString().trim()
+        correo = binding.etEmail.text.toString().trim()
+        password = binding.etCpassword.text.toString().trim()
+        Cpassword = binding.etCpassword.text.toString().trim()
         if (nombre.isEmpty()) {
             binding.etNombreV.error = "Ingrese nombre"
             binding.etNombreV.requestFocus()
         } else if (correo.isEmpty()) {
-            binding.etEmailV.error = "Ingrese correo"
-            binding.etEmailV.requestFocus()
+            binding.etEmail.error = "Ingrese correo"
+            binding.etEmail.requestFocus()
         }else if(!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
             binding.etNombreV.error = "Correo no valido"
             binding.etNombreV.requestFocus()
         } else if (password.isEmpty()) {
-            binding.etCpasswordV.error = "Ingrese contraseña"
-            binding.etCpasswordV.requestFocus()
+            binding.etCpassword.error = "Ingrese contraseña"
+            binding.etCpassword.requestFocus()
         } else if (password.length < 6) {
-            binding.etCpasswordV.error = "Contraseña debe tener al menos 6 caracteres"
-            binding.etCpasswordV.requestFocus()
+            binding.etCpassword.error = "Contraseña debe tener al menos 6 caracteres"
+            binding.etCpassword.requestFocus()
         } else if (Cpassword.isEmpty()) {
-            binding.etCpasswordV.error = "Confirme contraseña"
-            binding.etCpasswordV.requestFocus()
+            binding.etCpassword.error = "Confirme contraseña"
+            binding.etCpassword.requestFocus()
         } else if (password != Cpassword) {
-            binding.etCpasswordV.error = "Contraseñas no coinciden"
-            binding.etCpasswordV.requestFocus()
+            binding.etCpassword.error = "Contraseñas no coinciden"
+            binding.etCpassword.requestFocus()
             } else
                 registrarVendedor()
     }

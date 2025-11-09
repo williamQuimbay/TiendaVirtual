@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.odinsystem.tiendavirtual.R
+import com.odinsystem.tiendavirtual.SelecionarTipoActivity
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentMisProductosV
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentOrdenesV
 import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentInicioV
@@ -65,7 +66,7 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
 
     private fun cerrarSession(){
         firebaseAuth!!.signOut()
-        startActivity(Intent(applicationContext, LoginVendedorActivity::class.java))
+        startActivity(Intent(applicationContext, SelecionarTipoActivity::class.java))
         finish()
         Toast.makeText(applicationContext, "Has cerrada sesion", Toast.LENGTH_SHORT).show()
     }
@@ -73,7 +74,7 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
     private fun comprobarSesion() {
 //        si el ususario nbo ha iniciado session
         if (firebaseAuth!!.currentUser == null) {
-            startActivity(Intent(applicationContext, LoginVendedorActivity::class.java))
+            startActivity(Intent(applicationContext, SelecionarTipoActivity::class.java))
             Toast.makeText(applicationContext, "Vendedor no registrado o no loggeado", Toast.LENGTH_SHORT).show()
         }else{
             Toast.makeText(applicationContext, "Vendedor en linea", Toast.LENGTH_SHORT).show()
