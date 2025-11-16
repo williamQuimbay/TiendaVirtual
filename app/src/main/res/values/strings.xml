@@ -9,7 +9,6 @@
     <string name="tipoCliente">Cliente</string>
 
 
-
     <!--navegacion vendedor-->
     <string name="op_inicio_v">Inicio</string>
     <string name="op_mi_tienda_v">Mi tienda</string>
@@ -67,6 +66,19 @@
     <string name="txtLoginC">Login de cliente</string>
     <string name="btnLoginC">Ingresar</string>
     <string name="tvRegistrarC">Registarse</string>
+
+    <!--Productos-->
+    <string name="txtAgregarProductos">Agregar productos</string>
+    <string name="etNombreP">Nombre del producto</string>
+    <string name="etDescrpcionP">Descripcion</string>
+    <string name="Categoria">Categoria</string>
+    <string name="etPrecioP">Precio</string>
+    <string name="txtDescuento">Descuento</string>
+    <string name="etPrecioConDescuentoP">Precio con descuento</string>
+    <string name="etNotaDescuentoP">Ejm 10% Descuento</string>
+    <string name="btnAgregarP">Agregar producto"</string>
+
+
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
