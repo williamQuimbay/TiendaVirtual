@@ -1,5 +1,6 @@
 package com.odinsystem.tiendavirtual.Vendedor
 
+import android.R.attr.id
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,6 +18,7 @@ import com.odinsystem.tiendavirtual.R
 import com.odinsystem.tiendavirtual.SelecionarTipoActivity
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentMisProductosV
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentOrdenesV
+import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentCategoriaV
 import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentInicioV
 import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentMiTiendaV
 import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentReseniaV
@@ -95,6 +97,10 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
 
             R.id.op_mi_tienda_v -> {
                 replaceFragment(FragmentMiTiendaV())
+            }
+
+            R.id.op_categorias_v->{
+             replaceFragment(FragmentCategoriaV())
             }
 
             R.id.op_resenia_v -> {

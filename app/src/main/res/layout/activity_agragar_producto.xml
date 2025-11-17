@@ -105,13 +105,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-
+                <!--categoria del producto-->
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/Categoria"
+                android:text="@string/Categoria"
+                android:padding="15dp"
+                android:textSize="17sp"
+                android:layout_marginTop="5dp"
+                app:drawableEndCompat="@drawable/ico_abajo"
+                android:background="@drawable/custom_edittex"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/TIL_Descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
 
             <!--Precio-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIL_Precio"
-                android:layout_below="@id/TIL_Descripcion"
+                android:layout_below="@+id/Categoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

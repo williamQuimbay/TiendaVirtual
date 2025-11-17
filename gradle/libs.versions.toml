@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.0"
+agp = "8.13.1"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -14,6 +14,7 @@ googleService="4.4.4"
 firebaseAuthV="24.0.1"
 firebaseDatabaseV ="22.0.1"
 imagePikerV="2.1"
+glideV="5.0.5"
 
 
 
@@ -30,6 +31,8 @@ lottie={group="com.airbnb.android",name="lottie",version.ref="lottieV"}
 firebaseAuth={group="com.google.firebase", name="firebase-auth", version.ref="firebaseAuthV"}
 firebaseDatabase={group="com.google.firebase", name="firebase-database", version.ref="firebaseDatabaseV"}
 imagePiker={group="com.github.dhaval2404", name="imagepicker", version.ref="imagePikerV"}
+glide={group="com.github.bumptech.glide", name="glide", version.ref="glideV"}
+
 
 
 

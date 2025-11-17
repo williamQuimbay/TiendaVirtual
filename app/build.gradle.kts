@@ -55,4 +55,5 @@ dependencies {
     implementation(libs.firebaseAuth)/* autenticacion con firebase*/
     implementation(libs.firebaseDatabase)/* base de datos*/
     implementation(libs.imagePiker)/*Recortar una imagen*/
+    implementation(libs.glide)/** leer imagenes */
 }
