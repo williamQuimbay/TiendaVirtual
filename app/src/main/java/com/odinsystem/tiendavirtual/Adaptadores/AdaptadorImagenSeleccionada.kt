@@ -1,67 +1,112 @@
 package com.odinsystem.tiendavirtual.Adaptadores
 
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import com.odinsystem.tiendavirtual.Modelos.ModeloImagenSeleccionada
 import com.odinsystem.tiendavirtual.R
-import com.odinsystem.tiendavirtual.databinding.ItemImagenesSelecionadasBinding
+import com.odinsystem.tiendavirtual.databinding.ItemImagenesSeleccionadasBinding
 
-class AdaptadorImagenSeleccionada
-    (
-    private val context: Context,
-    private val ImagenesSelecionadasArrayList : ArrayList<ModeloImagenSeleccionada>
-): RecyclerView.Adapter<AdaptadorImagenSeleccionada.holderImagenesSeleccionadas>(){
-    private lateinit var binding: ItemImagenesSelecionadasBinding
-    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): holderImagenesSeleccionadas {
 
-        binding = ItemImagenesSelecionadasBinding.inflate(LayoutInflater.from(context),parent,false)
-        return holderImagenesSeleccionadas(binding.root)
-
+class AdaptadorImagenSeleccionada(
+    private val context : Context,
+    private val imagenesSelecArrayList : ArrayList<ModeloImagenSeleccionada>,
+    private val idProducto : String
+): Adapter<AdaptadorImagenSeleccionada.HolderImagenSeleccionada>() {
+    private lateinit var binding : ItemImagenesSeleccionadasBinding
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderImagenSeleccionada {
+        binding = ItemImagenesSeleccionadasBinding.inflate(LayoutInflater.from(context),parent,false)
+        return HolderImagenSeleccionada(binding.root)
     }
 
     override fun getItemCount(): Int {
-
-        return ImagenesSelecionadasArrayList.size
-
+        return imagenesSelecArrayList.size
     }
 
-    override fun onBindViewHolder(holder: holderImagenesSeleccionadas, position: Int) {
-        val modelo = ImagenesSelecionadasArrayList[position]
-        val imagenUri = modelo.imgUri
+    override fun onBindViewHolder(holder: HolderImagenSeleccionada, position: Int) {
+        val modelo = imagenesSelecArrayList[position]
 
-            // leyendo las imagenes
-        try {
-            Glide.with(context)
-                .load(imagenUri)
-                .placeholder(R.drawable.item_imagen)
-                .into(holder.item_img)
+        if (modelo.deInternet){
+            try {
+                val imagenUrl = modelo.imagenUrl
+                Glide.with(context)
+                    .load(imagenUrl)
+                    .placeholder(R.drawable.item_imagen)
+                    .into(holder.imagenItem)
+            }catch (e:Exception){
 
-        }catch (e:Exception){
+            }
+        }else{
+            //Leyendo la imagen(es)
+            val imagenUri = modelo.imagenUri
+            try {
+                Glide.with(context)
+                    .load(imagenUri)
+                    .placeholder(R.drawable.item_imagen)
+                    .into(holder.imagenItem)
+            }catch (e:Exception){
 
+            }
         }
 
-        //Evento para borrar la imagen
-
+        //Evento para eliminar una imagen de la lista
         holder.btn_borrar.setOnClickListener {
-            ImagenesSelecionadasArrayList.remove(modelo)
+            if (modelo.deInternet){
+                eliminarImagenFirebase(modelo, position)
+            }
+            imagenesSelecArrayList.remove(modelo)
             notifyDataSetChanged()
-
         }
+    }
 
+    private fun eliminarImagenFirebase(
+        modelo: ModeloImagenSeleccionada,
+        position: Int) {
 
-        }
+        val idImagen = modelo.id
 
-
-    inner class holderImagenesSeleccionadas(itemView: View) : RecyclerView.ViewHolder(itemView){
-
-        var item_img = binding.itemImagen
-        var btn_borrar = binding.borrarItem
+        val ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.child(idProducto).child("Imagenes").child(idImagen)
+            .removeValue()
+            .addOnSuccessListener {
+                try {
+                    imagenesSelecArrayList.remove(modelo)
+                    notifyItemRemoved(position)
+                    eliminarImagenStorage(modelo)
+                }catch (e:Exception){
+                    Toast.makeText(context, "${e.message}",Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e->
+                Toast.makeText(context, "${e.message}",Toast.LENGTH_SHORT).show()
+            }
 
     }
 
+    private fun eliminarImagenStorage(modelo: ModeloImagenSeleccionada) {
+        val rutaImagen = "Productos/"+modelo.id
+
+        val ref = FirebaseStorage.getInstance().getReference(rutaImagen)
+        ref.delete()
+            .addOnSuccessListener {
+                Toast.makeText(context, "Imagen eliminada",Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(context, "${e.message}",Toast.LENGTH_SHORT).show()
+            }
+
+    }
+
+    inner class HolderImagenSeleccionada(itemView : View) : ViewHolder(itemView){
+        var imagenItem = binding.imagenItem
+        var btn_borrar = binding.borrarItem
+    }
 }

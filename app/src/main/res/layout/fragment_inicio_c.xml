@@ -9,7 +9,8 @@
     <FrameLayout
         android:id="@+id/bottomFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -22,15 +23,13 @@
         app:fabCradleRoundedCornerRadius="20dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+            android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav_bar_cliente_menu"/>
-
-
 
 
     </com.google.android.material.bottomappbar.BottomAppBar>

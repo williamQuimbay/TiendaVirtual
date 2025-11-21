@@ -44,14 +44,14 @@ class RegistroClienteActivity : AppCompatActivity() {
 
 
     private fun validarINformacion() {
-        nombre = binding.etNombreC.text.toString().trim()
+        nombre = binding.etNombresC.text.toString().trim()
         correo = binding.etEmail.text.toString().trim()
         password = binding.etPassword.text.toString().trim()
-        confirmarPassword = binding.etCpassword.text.toString().trim()
+        confirmarPassword = binding.etCPassword.text.toString().trim()
 
         if (nombre.isEmpty()) {
-            binding.etNombreC.error = "Ingrese su nombre"
-            binding.etNombreC.requestFocus()
+            binding.etNombresC.error = "Ingrese su nombre"
+            binding.etNombresC.requestFocus()
         }else if(correo.isEmpty()){
             binding.etEmail.error = "Ingrese su email"
             binding.etEmail.requestFocus()
@@ -65,11 +65,11 @@ class RegistroClienteActivity : AppCompatActivity() {
             binding.etPassword.error = "La contraseña debe tener al menos 6 caracteres"
             binding.etPassword.requestFocus()
         }else if(confirmarPassword.isEmpty()){
-            binding.etCpassword.error = "Confirme su contraseña"
-            binding.etCpassword.requestFocus()
+            binding.etCPassword.error = "Confirme su contraseña"
+            binding.etCPassword.requestFocus()
         }else if(password != confirmarPassword){
-            binding.etCpassword.error = "Las contraseñas no coinciden"
-            binding.etCpassword.requestFocus()
+            binding.etCPassword.error = "Las contraseñas no coinciden"
+            binding.etCPassword.requestFocus()
         }else{
             registrarCliente()
 
@@ -120,7 +120,7 @@ class RegistroClienteActivity : AppCompatActivity() {
                     startActivity(
                         Intent(
                             this@RegistroClienteActivity,
-                            MainActivityCliene::class.java
+                            MainActivityCliente::class.java
                         )
                     )
                     finishAffinity()

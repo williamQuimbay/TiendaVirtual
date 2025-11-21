@@ -56,4 +56,16 @@ dependencies {
     implementation(libs.firebaseDatabase)/* base de datos*/
     implementation(libs.imagePiker)/*Recortar una imagen*/
     implementation(libs.glide)/** leer imagenes */
+    implementation(libs.storage)/** subir multimedia */
+    implementation(libs.authGoogle) /*Iniciar sesión con google*/
+    implementation(libs.ccp) /*Seleccionar nuestro código telefónico por país*/
+    implementation(libs.circleImage)
+    implementation(libs.photoView)
+    implementation(libs.maps)
+    implementation(libs.places)
+    implementation(libs.retrofit)
+    implementation(libs.converterGson)
+    implementation(libs.okhttp3)
+    implementation(libs.browser)
+
 }

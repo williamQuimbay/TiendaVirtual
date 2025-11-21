@@ -1,54 +1,65 @@
 package com.odinsystem.tiendavirtual.Vendedor
 
-import android.R.attr.id
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.odinsystem.tiendavirtual.R
-import com.odinsystem.tiendavirtual.SelecionarTipoActivity
+import com.odinsystem.tiendavirtual.SeleccionarTipoActivity
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentMisProductosV
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentOrdenesV
-import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentCategoriaV
-import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentInicioV
-import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentMiTiendaV
-import com.odinsystem.tiendavirtual.Vendedor.nav_Fragments_Vendedor.FragmentReseniaV
+import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentCategoriasV
+import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentInicioV
+import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentMiTiendaV
+import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentProductosV
 import com.odinsystem.tiendavirtual.databinding.ActivityMainVendedorBinding
 
-class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivityVendedor : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var binding: ActivityMainVendedorBinding
+    private lateinit var binding : ActivityMainVendedorBinding
+    private var firebaseAuth : FirebaseAuth?=null
 
-    private var firebaseAuth: FirebaseAuth? = null
-
-
-
+    private var dobleClick = false
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainVendedorBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
 
-
-
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         firebaseAuth = FirebaseAuth.getInstance()
         comprobarSesion()
 
-        binding.navigatorView.setNavigationItemSelectedListener(this)
+        binding.navigationView.setNavigationItemSelectedListener(this)
 
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                if (dobleClick){
+                    /*Salimos de la app*/
+                    finish()
+                    return
+                }
+
+                dobleClick = true
+                Toast.makeText(this@MainActivityVendedor, "Presione nuevamente para salir",
+                    Toast.LENGTH_SHORT).show()
+
+                handler.postDelayed({dobleClick = false}, 2000)
+            }
+        })
 
         val toggle = ActionBarDrawerToggle(
             this,
@@ -56,63 +67,60 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
             toolbar,
             R.string.open_drawer,
             R.string.close_drawer
-
         )
+
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         replaceFragment(FragmentInicioV())
-        binding.navigatorView.setCheckedItem(R.id.op_inicio_v)
+        binding.navigationView.setCheckedItem(R.id.op_inicio_v)
 
     }
 
-    private fun cerrarSession(){
+    private fun cerrarSesion(){
         firebaseAuth!!.signOut()
-        startActivity(Intent(applicationContext, SelecionarTipoActivity::class.java))
+        startActivity(Intent(applicationContext, SeleccionarTipoActivity::class.java))
         finish()
-        Toast.makeText(applicationContext, "Has cerrada sesion", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Has cerrado sesión", Toast.LENGTH_SHORT).show()
     }
 
-    private fun comprobarSesion() {
-//        si el ususario nbo ha iniciado session
-        if (firebaseAuth!!.currentUser == null) {
-            startActivity(Intent(applicationContext, SelecionarTipoActivity::class.java))
-            Toast.makeText(applicationContext, "Vendedor no registrado o no loggeado", Toast.LENGTH_SHORT).show()
+    private fun comprobarSesion(){
+        /*Si el usuario no ha iniciado sesión, que lo diriga a OpcionesLogin*/
+        if (firebaseAuth!!.currentUser==null){
+            startActivity(Intent(applicationContext, SeleccionarTipoActivity::class.java))
         }else{
-            Toast.makeText(applicationContext, "Vendedor en linea", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"Usuario en línea", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager
+            .beginTransaction()
             .replace(R.id.navFragment, fragment)
             .commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.op_inicio_v -> {
+        when (item.itemId){
+            R.id.op_inicio_v->{
                 replaceFragment(FragmentInicioV())
             }
-
-            R.id.op_mi_tienda_v -> {
+            R.id.op_mi_tienda_v->{
                 replaceFragment(FragmentMiTiendaV())
             }
-
             R.id.op_categorias_v->{
-             replaceFragment(FragmentCategoriaV())
+                replaceFragment(FragmentCategoriasV())
             }
-
-            R.id.op_resenia_v -> {
-                replaceFragment(FragmentReseniaV())
+            R.id.op_productos_v->{
+                replaceFragment(FragmentProductosV())
             }
-            R.id.op_cerrar_sesion_v ->{
-               cerrarSession()
+            R.id.op_cerrar_sesion_v->{
+                cerrarSesion()
             }
-            R.id.op_mis_productos ->{
+            R.id.op_mis_productos_v->{
                 replaceFragment(FragmentMisProductosV())
             }
-            R.id.op_mis_ordenes_v ->{
+            R.id.op_mis_ordenes_v->{
                 replaceFragment(FragmentOrdenesV())
             }
         }

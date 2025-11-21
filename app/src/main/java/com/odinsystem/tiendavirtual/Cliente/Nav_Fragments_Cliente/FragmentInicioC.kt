@@ -1,48 +1,54 @@
 package com.odinsystem.tiendavirtual.Cliente.Nav_Fragments_Cliente
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.odinsystem.tiendavirtual.Cliente.Bottom_Nav_Fragments_Cliente.FragmentCarritoC
+import com.odinsystem.tiendavirtual.Cliente.Bottom_Nav_Fragments_Cliente.FragmentFavoritosC
 import com.odinsystem.tiendavirtual.Cliente.Bottom_Nav_Fragments_Cliente.FragmentMisOrdenesC
 import com.odinsystem.tiendavirtual.Cliente.Bottom_Nav_Fragments_Cliente.FragmentTiendaC
 import com.odinsystem.tiendavirtual.R
 import com.odinsystem.tiendavirtual.databinding.FragmentInicioCBinding
 
+
 class FragmentInicioC : Fragment() {
 
-    private lateinit var binding: FragmentInicioCBinding
+    private lateinit var binding : FragmentInicioCBinding
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentInicioCBinding.inflate(inflater,container, false)
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentInicioCBinding.inflate(inflater, container, false)
-
-
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.op_mi_tienda_c -> {
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.op_tienda_c->{
                     replaceFragment(FragmentTiendaC())
                 }
-                R.id.op_mis_ordenes_c -> {
+                R.id.op_favoritos_c->{
+                    replaceFragment(FragmentFavoritosC())
+                }
+                R.id.op_carrito_c->{
+                    replaceFragment(FragmentCarritoC())
+                }
+                R.id.op_mis_ordenes_c->{
                     replaceFragment(FragmentMisOrdenesC())
                 }
             }
             true
         }
+
         replaceFragment(FragmentTiendaC())
-        binding.bottomNavigationView.selectedItemId = R.id.op_mi_tienda_c
+        binding.bottomNavigation.selectedItemId = R.id.op_tienda_c
 
         return binding.root
-
-
     }
+
     private fun replaceFragment(fragment: Fragment) {
         parentFragmentManager
             .beginTransaction()
-            .replace(R.id.bottomFragment, fragment)
+            .replace(R.id.bottomFragment,fragment)
             .commit()
     }
 

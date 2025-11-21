@@ -9,7 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.odinsystem.tiendavirtual.Cliente.MainActivityCliene
+import com.odinsystem.tiendavirtual.Cliente.MainActivityCliente
 import com.odinsystem.tiendavirtual.Vendedor.MainActivityVendedor
 
 
@@ -46,7 +46,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun comprobarTipoUsuario(){
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
-           startActivity(Intent(this, SelecionarTipoActivity::class.java))
+           startActivity(Intent(this, SeleccionarTipoActivity::class.java))
         }else{
             val reference = FirebaseDatabase.getInstance().getReference("Usuarios")
             reference.child(firebaseUser.uid)
@@ -57,7 +57,7 @@ class SplashScreenActivity : AppCompatActivity() {
                             startActivity(Intent(this@SplashScreenActivity, MainActivityVendedor::class.java))
                             finishAffinity()
                         }else if(tipoUsuario == "cliente"){
-                            startActivity(Intent(this@SplashScreenActivity, MainActivityCliene::class.java))
+                            startActivity(Intent(this@SplashScreenActivity, MainActivityCliente::class.java))
                             finishAffinity()
                         }
                     }
