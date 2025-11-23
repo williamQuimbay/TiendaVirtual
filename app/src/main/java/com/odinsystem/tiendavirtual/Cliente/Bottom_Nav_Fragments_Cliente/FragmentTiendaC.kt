@@ -49,11 +49,11 @@ class FragmentTiendaC : Fragment() {
     }
 
     private fun leerInfoCliente(){
-        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        val ref = FirebaseDatabase.getInstance().getReference("Clientes")
         ref.child("${firebaseAuth.uid}")
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val nombres = "${snapshot.child("nombres").value}"
+                    val nombres = "${snapshot.child("nombresC").value}"
                     val direccion = "${snapshot.child("direccion").value}"
                     binding.bienvenidaTXT.setText("Bienvenido(a): ${nombres}")
                     binding.direccionTXT.setText("${direccion}")

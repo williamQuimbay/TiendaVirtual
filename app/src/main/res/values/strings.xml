@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Tienda Virtual</string>
 
-<!--    <string name="default_web_client_id">665697256937-ohs4sl66qpsrrmd3ipjdeqt5nvf92j41.apps.googleusercontent.com</string>-->
-   <string name="mi_google_maps_api_key">AIzaSyBnTGpLRO5FVxYKs8CxLT14XQh1wFt8eEo</string>
+<string name="default_web_client_id">517620716203-g48cf6ghch35ce2nf1b1734dp31bbsve.apps.googleusercontent.com</string>
+   <string name="mi_google_maps_api_key">AIzaSyAIzYAvgWzwgPsvngcbdCAxFkkYJO3WGrM</string>
 
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>

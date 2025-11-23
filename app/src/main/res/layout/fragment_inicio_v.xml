@@ -36,13 +36,14 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/celeste_claro"
         android:src="@drawable/ico_agregar"
-        app:tint="@android:color/white"
-        android:layout_marginBottom="30dp"
-        app:layout_anchor="@id/bottomAppBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_anchor="@+id/bottomAppBar"
+        app:layout_anchorGravity="top|center"
+        app:tint="@android:color/white" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -81,6 +81,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center">
 
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="100dp"
                 android:layout_height="60dp">
@@ -135,6 +136,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+
+
         <!--Recuperar contraseña-->
         <TextView
             android:id="@+id/tvRecuperarPass"
@@ -147,6 +150,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+
+
+
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
 
 </RelativeLayout>

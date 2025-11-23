@@ -1,6 +1,5 @@
 package com.odinsystem.tiendavirtual.Cliente
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,14 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.dinocode.tiendavirtualapp_kotlin.Cliente.Nav_Fragments_Cliente.FragmentMiPerfilC
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.odinsystem.tiendavirtual.Cliente.Nav_Fragments_Cliente.FragmentInicioC
-import com.odinsystem.tiendavirtual.Cliente.Nav_Fragments_Cliente.FragmentMiPerfilC
 import com.odinsystem.tiendavirtual.R
 import com.odinsystem.tiendavirtual.SeleccionarTipoActivity
 import com.odinsystem.tiendavirtual.databinding.ActivityMainClienteBinding
-import kotlin.jvm.java
 
 class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
 
@@ -98,18 +96,18 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.op_inicio_c->{
-                replaceFragment(FragmentInicioC())
-            }
-            R.id.op_mi_perfil_c->{
-                replaceFragment(FragmentMiPerfilC())
-            }
-            R.id.op_cerrar_sesion_c->{
-                cerrarSesion()
-            }
+         when(item.itemId){
+             R.id.op_inicio_c->{
+                 replaceFragment(FragmentInicioC())
+             }
+             R.id.op_mi_perfil_c->{
+                 replaceFragment(FragmentMiPerfilC())
+             }
+             R.id.op_cerrar_sesion_c->{
+                 cerrarSesion()
+             }
 
-        }
+         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }

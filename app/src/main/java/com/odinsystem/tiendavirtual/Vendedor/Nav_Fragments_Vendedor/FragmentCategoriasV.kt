@@ -1,5 +1,4 @@
-package com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor
-
+package com.dinocode.tiendavirtualapp_kotlin.Vendedor.Nav_Fragments_Vendedor
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -22,7 +21,6 @@ import com.odinsystem.tiendavirtual.Adaptadores.AdaptadorCategoriaV
 import com.odinsystem.tiendavirtual.Modelos.ModeloCategoria
 import com.odinsystem.tiendavirtual.R
 import com.odinsystem.tiendavirtual.databinding.FragmentCategoriasVBinding
-
 
 class FragmentCategoriasV : Fragment() {
 
@@ -127,9 +125,9 @@ class FragmentCategoriasV : Fragment() {
         ref.child(keyId!!)
             .setValue(hashMap)
             .addOnSuccessListener {
-                //progressDialog.dismiss()
-                //Toast.makeText(context, "Se agregó la categoría con éxito",Toast.LENGTH_SHORT).show()
-                //binding.etCategoria.setText("")
+                progressDialog.dismiss()
+                Toast.makeText(context, "Se agregó la categoría con éxito",Toast.LENGTH_SHORT).show()
+                binding.etCategoria.setText("")
                 subirImgStorage(keyId)
             }
             .addOnFailureListener {e->
@@ -174,5 +172,3 @@ class FragmentCategoriasV : Fragment() {
     }
 
 }
-
-

@@ -12,13 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.dinocode.tiendavirtualapp_kotlin.Vendedor.Nav_Fragments_Vendedor.FragmentCategoriasV
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.odinsystem.tiendavirtual.R
 import com.odinsystem.tiendavirtual.SeleccionarTipoActivity
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentMisProductosV
 import com.odinsystem.tiendavirtual.Vendedor.Bottom_Nav_Fragments_Vendedor.FragmentOrdenesV
-import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentCategoriasV
 import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentInicioV
 import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentMiTiendaV
 import com.odinsystem.tiendavirtual.Vendedor.Nav_Fragments_Vendedor.FragmentProductosV

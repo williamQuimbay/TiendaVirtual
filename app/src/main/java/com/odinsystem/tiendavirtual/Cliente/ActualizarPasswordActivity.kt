@@ -1,5 +1,6 @@
 package com.odinsystem.tiendavirtual.Cliente
 
+
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
@@ -95,26 +96,12 @@ class ActualizarPasswordActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this@ActualizarPasswordActivity, "La contraseña ha sido cambiada",Toast.LENGTH_SHORT).show()
                 firebaseAuth.signOut()
-                startActivity(Intent(this@ActualizarPasswordActivity, loginClienteActivity::class.java))
+                startActivity(Intent(this@ActualizarPasswordActivity, LoginClienteActivity::class.java))
                 finish()
             }
             .addOnFailureListener {e->
                 progressDialog.dismiss()
                 Toast.makeText(this@ActualizarPasswordActivity, "${e.message}",Toast.LENGTH_SHORT).show()
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

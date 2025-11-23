@@ -1,4 +1,4 @@
-package com.odinsystem.tiendavirtual.Cliente.Nav_Fragments_Cliente
+package com.dinocode.tiendavirtualapp_kotlin.Cliente.Nav_Fragments_Cliente
 
 import android.app.Activity
 import android.content.Context
